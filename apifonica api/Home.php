@@ -58,8 +58,6 @@ class Home extends CI_Controller
             $response['message'] = $err->getMessage();
         }
 
-        // Further processing ...
-        if ($server_output == "OK") { ... } else { ... }
     }
     public function send()
     {
