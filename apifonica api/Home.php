@@ -57,7 +57,7 @@ class Home extends CI_Controller
             $response['success'] = false;
             $response['message'] = $err->getMessage();
         }
-
+        return $response;
     }
     public function send()
     {
