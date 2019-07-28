@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once APPPATH . '/libraries/sms/Twilio/autoload.php';
+// require_once APPPATH . '/libraries/sms/Twilio/autoload.php';
 
-use Twilio\Rest\Client;
+// use Twilio\Rest\Client;
 
 class Home extends CI_Controller
 {
@@ -31,15 +31,10 @@ class Home extends CI_Controller
                     'text' => $message
                 );
 
-                //url-ify the data for the POST
-                foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-                rtrim($fields_string, '&');
 
-                curl_setopt($ch, CURLOPT_URL, '–X');
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
                 curl_setopt($ch, CURLOPT_URL, $url);
                 curl_setopt($ch, CURLOPT_POST, 1);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields_string));
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_USERPWD, $sid . ':' . $authToken);
                 $headers = array();
